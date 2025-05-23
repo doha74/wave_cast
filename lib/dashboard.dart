@@ -73,10 +73,7 @@ class LocationHeader extends StatelessWidget {
                 padding: EdgeInsets.only(top: 4),
                 child: Text(
                   'Monday, June 10 • 9:45 AM',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                  ),
+                  style: TextStyle(fontSize: 14, color: Colors.grey),
                 ),
               ),
             ],
@@ -101,6 +98,8 @@ class LocationHeader extends StatelessWidget {
   }
 }
 
+//card of weather ouiiiii
+
 class CurrentWeatherCard extends StatelessWidget {
   const CurrentWeatherCard({super.key});
 
@@ -118,7 +117,7 @@ class CurrentWeatherCard extends StatelessWidget {
               color: Colors.black.withOpacity(0.1),
               blurRadius: 4,
               offset: const Offset(0, 2),
-            )
+            ),
           ],
         ),
         child: Padding(
@@ -128,10 +127,7 @@ class CurrentWeatherCard extends StatelessWidget {
               const WeatherSummaryRow(),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 8),
-                child: Divider(
-                  height: 1,
-                  color: Colors.grey,
-                ),
+                child: Divider(height: 1, color: Colors.grey),
               ),
               const WeatherDetailsRow(),
             ],
@@ -154,6 +150,7 @@ class WeatherSummaryRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
+              // temperature
               '72°F',
               style: GoogleFonts.interTight(
                 fontSize: 36,
@@ -165,19 +162,10 @@ class WeatherSummaryRow extends StatelessWidget {
               padding: EdgeInsets.only(top: 4),
               child: Text(
                 'Partly Cloudy',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
+                style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
             ),
           ],
-        ),
-        Image.asset(
-          'assets/partly_cloudy.png', // Replace with your asset
-          width: 80,
-          height: 80,
-          fit: BoxFit.contain,
         ),
       ],
     );
@@ -203,11 +191,7 @@ class WeatherDetailsRow extends StatelessWidget {
           label: 'Humidity',
           value: '65%',
         ),
-        WeatherDetailItem(
-          icon: Icons.umbrella,
-          label: 'Rain',
-          value: '15%',
-        ),
+        WeatherDetailItem(icon: Icons.umbrella, label: 'Rain', value: '15%'),
       ],
     );
   }
@@ -235,18 +219,11 @@ class WeatherDetailItem extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: Icon(
-                icon,
-                color: Colors.black87,
-                size: 20,
-              ),
+              child: Icon(icon, color: Colors.black87, size: 20),
             ),
             Text(
               label,
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.black87,
-              ),
+              style: const TextStyle(fontSize: 14, color: Colors.black87),
             ),
           ],
         ),
@@ -257,11 +234,7 @@ class WeatherDetailItem extends StatelessWidget {
               if (valueIcon != null)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: Icon(
-                    valueIcon,
-                    color: Colors.black87,
-                    size: 16,
-                  ),
+                  child: Icon(valueIcon, color: Colors.black87, size: 16),
                 ),
               Text(
                 value,
@@ -325,9 +298,10 @@ class HourlyForecastSection extends StatelessWidget {
             height: 120,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: forecasts
-                  .map((forecast) => HourlyForecastCard(forecast: forecast))
-                  .toList(),
+              children:
+                  forecasts
+                      .map((forecast) => HourlyForecastCard(forecast: forecast))
+                      .toList(),
             ),
           ),
         ],
@@ -356,17 +330,18 @@ class HourlyForecastCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12),
-      child: Container(
-        width: 80,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(12),
+      child: SizedBox(
+        width: 90,
+        height: 130, // Add a fixed height
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+          ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Better spacing
             children: [
               Text(
                 forecast.time,
@@ -376,18 +351,11 @@ class HourlyForecastCard extends StatelessWidget {
                   color: Colors.black87,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Icon(
-                  forecast.icon,
-                  size: 40,
-                  color: Colors.amber,
-                ),
-              ),
+              Icon(forecast.icon, size: 30, color: Colors.amber),
               Text(
                 forecast.temp,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: Colors.black87,
                 ),
@@ -417,7 +385,7 @@ class FishingConditionsCard extends StatelessWidget {
               color: Colors.black.withOpacity(0.1),
               blurRadius: 4,
               offset: const Offset(0, 2),
-            )
+            ),
           ],
         ),
         child: Padding(
@@ -429,11 +397,7 @@ class FishingConditionsCard extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 8),
-                    child: Icon(
-                      Icons.anchor,
-                      color: Colors.white,
-                      size: 24,
-                    ),
+                    child: Icon(Icons.anchor, color: Colors.white, size: 24),
                   ),
                   Text(
                     'Fishing Conditions',
@@ -461,10 +425,7 @@ class FishingConditionsCard extends StatelessWidget {
                 child: Text(
                   'Light winds and stable barometric pressure make for ideal fishing conditions. '
                   'Fish are likely to be active near the surface in the morning hours.',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.white,
-                  ),
+                  style: TextStyle(fontSize: 14, color: Colors.white),
                 ),
               ),
               Row(
